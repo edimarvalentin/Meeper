@@ -45,6 +45,8 @@ public class SampleModel {
 		return name;
 	}
 
+	public String getId(){return String.valueOf(id);}
+
 	// Setters
 	public void setId(Long id) {
 		this.id = id;
