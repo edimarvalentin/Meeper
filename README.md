@@ -39,6 +39,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Developing this project needed more time. The tutorials given only covered how to work with the Twitter 1.1 API but I only could make requests to the v2 API since I only had the essential keys, not elevated. This forced me to dwelve deeper into the Twitter API and how HTTP and JSON work to retrieve data. After hours of debugging JSON exceptions, I was able to understand how to navigate JSON objects and how to specifically ask for them in the API to get the data I needed to bind in the adapter. 
 
+The tweet posting feature was done with the v2 version of the API. That came with it own set of problems but I was able to make sense of the newer API.
+
 ## Open-source libraries used
 
 - [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing
