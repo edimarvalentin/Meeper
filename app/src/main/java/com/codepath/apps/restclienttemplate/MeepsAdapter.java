@@ -51,6 +51,7 @@ public class MeepsAdapter extends RecyclerView.Adapter<MeepsAdapter.ViewHolder> 
         TextView tvRemeeps;
         TextView tvLikes;
         TextView tvUsername;
+
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
@@ -66,9 +67,9 @@ public class MeepsAdapter extends RecyclerView.Adapter<MeepsAdapter.ViewHolder> 
             tvBody.setText(meep.body);
             tvRemeeps.setText(String.valueOf(meep.remeeps));
             tvLikes.setText(String.valueOf(meep.likes));
-            tvScreenName.setText(meep.user.name);
-            tvUsername.setText("@" + meep.user.screenName);
             Glide.with(context).load(meep.user.getProfileUrl()).into(ivProfileImage);
+            tvScreenName.setText(meep.user.getUsername());
+            tvUsername.setText("@" + meep.user.getName());
         }
     }
 

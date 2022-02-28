@@ -11,6 +11,10 @@ import com.codepath.oauth.OAuthBaseClient;
 import com.github.scribejava.apis.TwitterApi;
 import com.github.scribejava.core.builder.api.BaseApi;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.parceler.Parcel;
+
 import java.util.List;
 
 /*
@@ -30,7 +34,6 @@ public class MeeperClient extends OAuthBaseClient {
 	public static final String REST_URL = "https://api.twitter.com/2"; // Change this, base API URL
 	public static final String REST_CONSUMER_KEY = BuildConfig.CONSUMER_KEY;       // Change this inside apikey.properties
 	public static final String REST_CONSUMER_SECRET = BuildConfig.CONSUMER_SECRET; // Change this inside apikey.properties
-
 	// Landing page to indicate the OAuth flow worked in case Chrome for Android 25+ blocks navigation back to the app.
 	public static final String FALLBACK_URL = "https://codepath.github.io/android-rest-client-template/success.html";
 
@@ -63,6 +66,25 @@ public class MeeperClient extends OAuthBaseClient {
 		RequestParams params = new RequestParams();
 		params.put("max_results", 50);
 
+		client.get(apiUrl, params, handler);
+	}
+
+	public void setMeep(JsonHttpResponseHandler handler, String meep) {
+		String apiUrl = getApiUrl("tweets");
+		JSONObject body = new JSONObject();
+
+		try {
+			body.put("text", meep);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		client.post(apiUrl,body.toString(), handler);
+	}
+
+	public void getUserInfo(JsonHttpResponseHandler handler, String id){
+		String apiUrl = getApiUrl("users/" + id);
+		RequestParams params = new RequestParams();
+		params.put("user.fields", "username,name");
 		client.get(apiUrl, params, handler);
 	}
 
